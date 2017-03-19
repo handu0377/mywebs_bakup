@@ -1,0 +1,24 @@
+<button onclick=javascript:read();>测试一下</Button>
+<div id="disp"></div>
+<script language="javascript">
+function read()
+{ 
+  var s=""
+  var xmlDoc=new ActiveXObject("Microsoft.XMLDOM"); 
+  xmlDoc.async = false;
+  xmlDoc.load("message.xml");
+  var items = xmlDoc.getElementsByTagName("Note");
+  var n_items=items.length;
+  for (i=0;i<n_items;i++)
+  {
+  	var  name = items[i].getElementsByTagName("name")[0].firstChild.data;
+  	var  content = items[i].getElementsByTagName("content")[0].firstChild.data;
+  	var  time = items[i].getElementsByTagName("time")[0].firstChild.data;
+  	s=s+"用户名："+name+"&nbsp;&nbsp;内容："+content+"&nbsp;&nbsp;注册时间："+time+"<br>";
+  }
+  document.getElementById("disp").innerHTML=s;
+}  
+		
+</script>
+<br>
+
